@@ -1,25 +1,17 @@
-import logo from "./logo.svg";
+import { Route, Routes } from "react-router-dom";
+import ContactsView from "views/ContactList";
+import ContactListItemView from "views/ContactListItemView";
+import NotFoundPage from "views/NotFoundPage";
 import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => (
+  <>
+    <Routes>
+      <Route path="/react-contact-list" element={<ContactsView />} />
+      <Route path="/contact" element={<ContactListItemView />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  </>
+);
 
 export default App;
