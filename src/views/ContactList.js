@@ -1,12 +1,11 @@
 import { React } from "react";
 import { connect } from "react-redux";
-import * as actions from "redux/actions";
-import uuid from "react-uuid";
+import * as actions from "redux/contactList/contactList-actions";
 import { NavLink } from "react-router-dom";
 import styles from "styles/ContactList.module.css";
 
 function ContactsView({
-  value,
+  contactListArr,
   deleteContactBtnHandler,
   addNewContactBtnHandler,
 }) {
@@ -17,14 +16,19 @@ function ContactsView({
         Add contact
       </button>
       <ul>
-        {value.map((contact) => (
-          <li key={uuid()}>
+        {contactListArr.map((contact) => (
+          <li key={contact.id}>
             <NavLink to="/contact">
               <p>{contact.name}</p>
               <p>{contact.surname}</p>
               <p>{contact.number}</p>
             </NavLink>
-            <button type="button" onClick={deleteContactBtnHandler}>
+            <button
+              type="button"
+              onClick={() => {
+                console.log("btn pressed", contact.id);
+              }}
+            >
               Delete
             </button>
           </li>
@@ -35,11 +39,11 @@ function ContactsView({
 }
 
 const mapStateToProps = (state) => {
-  return { value: state.contactListArr };
+  return { contactListArr: state.contactListArr };
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    addNewContactBtnHandler: () => dispatch(actions.addNewContactBtnHandler(5)),
+    addNewContactBtnHandler: () => dispatch(actions.addNewContactBtnHandler()),
     deleteContactBtnHandler: () => dispatch(actions.deleteContactBtnHandler(5)),
   };
 };
