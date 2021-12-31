@@ -1,7 +1,8 @@
 import uuid from "react-uuid";
+import actionTypes from "./contactList-types";
 
 export const addNewContactBtnHandler = () => ({
-  type: "contactList/addNewContact",
+  type: actionTypes.ADD_NEW_CONTACT,
   payload: {
     id: uuid(),
     name: "Name",
@@ -10,7 +11,7 @@ export const addNewContactBtnHandler = () => ({
   },
 });
 
-export const deleteContactBtnHandler = (value) => ({
-  type: "contactList/deleteContact",
-  payload: value,
+export const deleteContactBtnHandler = (id) => ({
+  type: actionTypes.DELETE_CONTACT,
+  payload: id,
 });

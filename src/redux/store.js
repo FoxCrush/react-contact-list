@@ -15,7 +15,6 @@ const reducer = (state = initialState, action) => {
         contactListArr: [...state.contactListArr, action.payload],
       };
     case "contactList/deleteContact":
-      console.log(action.payload, state);
       return {
         contactListArr: state.contactListArr.filter(
           (contact) => contact.id !== action.payload

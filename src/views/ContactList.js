@@ -1,6 +1,6 @@
 import { React } from "react";
 import { connect } from "react-redux";
-import * as actions from "redux/contactList/contactList-actions";
+import * as actions from "redux/contactList/components/ContactList/contactList-actions";
 import { NavLink } from "react-router-dom";
 import styles from "styles/ContactList.module.css";
 
@@ -26,7 +26,7 @@ function ContactsView({
             <button
               type="button"
               onClick={() => {
-                console.log("btn pressed", contact.id);
+                deleteContactBtnHandler(contact.id);
               }}
             >
               Delete
@@ -41,10 +41,13 @@ function ContactsView({
 const mapStateToProps = (state) => {
   return { contactListArr: state.contactListArr };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     addNewContactBtnHandler: () => dispatch(actions.addNewContactBtnHandler()),
-    deleteContactBtnHandler: () => dispatch(actions.deleteContactBtnHandler(5)),
+    deleteContactBtnHandler: (value) =>
+      dispatch(actions.deleteContactBtnHandler(value)),
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(ContactsView);
