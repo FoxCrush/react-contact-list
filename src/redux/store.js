@@ -1,31 +1,9 @@
 import { createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import ContactListReducer from "redux/contactList/components/ContactList/contactList-reducer";
 
-const initialState = {
-  contactListArr: [
-    { name: "Alex", surname: "Tax", number: "123", id: "new_id_1" },
-    { name: "Sandy", surname: "Mon", number: "456", id: "new_id_2" },
-  ],
-};
+const rootReducer = ContactListReducer;
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "contactList/addNewContact":
-      return {
-        contactListArr: [...state.contactListArr, action.payload],
-      };
-    case "contactList/deleteContact":
-      return {
-        contactListArr: state.contactListArr.filter(
-          (contact) => contact.id !== action.payload
-        ),
-      };
-
-    default:
-      return state;
-  }
-};
-
-const store = createStore(reducer, composeWithDevTools());
+const store = createStore(rootReducer, composeWithDevTools());
 
 export default store;

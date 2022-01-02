@@ -8,7 +8,7 @@ const App = () => (
   <>
     <Routes>
       <Route path="/react-contact-list" element={<ContactsView />} />
-      <Route path="/contact" element={<ContactListItemView />} />
+      <Route path="/contact/:contactId" element={<ContactListItemView />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </>
