@@ -37,6 +37,7 @@ function ContactsView({
     </div>
   );
 }
+
 //throw state from store as props
 const mapStateToProps = (state) => {
   return { contactListArr: state.contactListArr };
